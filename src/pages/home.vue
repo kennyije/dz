@@ -1,5 +1,8 @@
 <template>
+	
 	<div>
+		<Header/>
+		<Footer/>
 		<div v-for="item in items" class="part">
 			<div class="part-left">
 				<div class="part-left-up">新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容

@@ -1,15 +1,41 @@
 <template>
+	
 	<div class="header-out">
-		<div class="header-left"><img class="header-left-img" src='../assets/img/md-contact.png'></img></div>
+		<transition>
+		<customer v-show="showCustomerInfo" @closeCustomerInfo="closeCustomer"></customer>
+		</transition>
+		<div class="header-left" @click="openCustomer()"><img class="header-left-img" src='../assets/img/md-contact.png'></img></div>
 		<div class="header-tab-left"><span class="header-text-left">TAB1</span></div>
 		<div class="header-tab-right"><span class="header-text-right">TAB2</span></div>
 	</div>
 </template>
 
 <script>
+	import customer from '@/pages/customer.vue'
+	export default{
+		data(){
+			return{
+				showCustomerInfo: false,
+			}
+		},
+		methods:{
+			openCustomer(){
+				this.showCustomerInfo = true
+			},
+			closeCustomer(){
+				this.showCustomerInfo = false
+			}
+		},
+		components:{
+			customer
+		}
+	}
 </script>
 
 <style>
+	.v-enter-active{
+		transition: all .3s ease
+	}
 	.header-out{
 		display: flex;
 		height: 45px;;
@@ -20,13 +46,13 @@
 		position: relative;
 	}
 	.header-left-img{
-		height: 20px;
-		width: 20px;
+		height: 30px;
+		width: 30px;
 		top: 0;
 		position: absolute;
 		bottom: 0;
 		margin: auto;
-		left: 0;
+		left: 10px;
 		right: 0;
 	}
 	.header-tab-left{

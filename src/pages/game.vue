@@ -1,8 +1,20 @@
 <template>
-	<div>比赛页面</div>
+	<div>
+		<Header/>
+		<Footer/>
+		比赛页面
+	</div>
 </template>
 
 <script>
+	import Header from '@/components/header.vue'
+	import Footer from '@/components/footer.vue'
+	export default {
+		components:{
+			Header,
+			Footer
+		},
+	}
 </script>
 
 <style>
