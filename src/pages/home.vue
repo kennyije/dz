@@ -6,7 +6,11 @@
 				新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容</div>
 				<div class="part-left-down">
 					<div class="part-left-down-left">
-						<img src="../assets/img/md-heart-empty.png" @click="thumbsUp(item)" />
+						<transition name="thumbs-up">
+							<img v-show="item.id == currentClick" class="thumbsClicked" src="../assets/img/md-heart-empty.png" @click="thumbsUp(item)" />
+						</transition>
+						<img class="thumbsClicked" src="../assets/img/md-heart-empty.png" @click="thumbsUp(item)"  />
+						
 						<span style="line-height: 35px; color:#8a8a8a;">{{item.thumbs}}</span>
 					</div>
 					<div class="part-left-down-right">
@@ -28,6 +32,7 @@
 	export default {
 		data(){
 			return {
+				currentClick: null,
 				items:[
 					{
 						id: 0,
@@ -50,6 +55,7 @@
 		},
 		methods:{
 			thumbsUp(item){
+				this.currentClick = item.id
 				item.thumbs ++
 				Vue.set(this.items, item.id, item) 
 			}
@@ -89,12 +95,12 @@
 	}
 	.part-left-down{
 		height: 30%;
-		    display: flex;
+		display: flex;
 	}
 	.part-left-down-left{
-		    height: 100%;
-    position: relative;
-    width: 50%;
+		height: 100%;
+		position: relative;
+		width: 50%;
 	}
 	.part-left-down-right{
 		height: 100%;
@@ -102,7 +108,7 @@
 			line-height: 35px;
 			color: #8a8a8a;
 	}
-	.part-left-down-left img{
+	.thumbsClicked{
 		    height: 80%;
     position: absolute;
     top: 0;
@@ -110,4 +116,42 @@
     margin: auto;
     left: 15px;
 	}
+	.thumbs-up-enter-active{
+		animation: thumbs-up .8s;
+	}
+	/* .thumbs-up-leave-active{
+		animation: thumbs-up .8s;
+	} */
+	@keyframes thumbs-up {
+	0% {
+		/* transform: scale(0); */
+		top: -10px;
+		left: 10px;
+	}
+	20% {
+		/* transform: scale(1.5); */
+		top: -20px;
+		left: 20px;
+	}
+	40% {
+		/* transform: scale(1); */
+		top: -30px;
+		left: 10px;
+	}
+	60% {
+		/* transform: scale(1); */
+		top: -40px;
+		left: 20px;
+	}
+	80% {
+		/* transform: scale(1); */
+		top: -50px;
+		left: 10px;
+	}
+	100% {
+		/* transform: scale(1); */
+		top: -60px;
+		left: 20px;
+	}
+}
 </style>
