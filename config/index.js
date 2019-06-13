@@ -10,7 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+		"/localhost":{
+			target:"http://www.pinzhi365.com:80",
+			changeOrigin:true,
+			pathRewrite:{
+			}
+		}
+	},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

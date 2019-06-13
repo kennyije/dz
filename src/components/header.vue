@@ -1,7 +1,7 @@
 <template>
 	
 	<div class="header-out">
-		<transition>
+		<transition  name="customer">
 		<customer v-show="showCustomerInfo" @closeCustomerInfo="closeCustomer"></customer>
 		</transition>
 		<div class="header-left" @click="openCustomer()"><img class="header-left-img" src='../assets/img/md-contact.png'></img></div>
@@ -33,9 +33,33 @@
 </script>
 
 <style>
-	.v-enter-active{
-		transition: all .3s ease
+	.customer-enter-active{
+		animation: customer-open .1s;
 	}
+	.customer-leave-active{
+		animation: customer-open .1s reverse;
+	}
+	@keyframes customer-open {
+		0% {
+			width: 10%;
+		}
+		20% {
+			width: 20%;
+		}
+		40% {
+			width: 40%;
+		}
+		60% {
+			width: 60%;
+		}
+		80% {
+			width: 80%;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+	
 	.header-out{
 		display: flex;
 		height: 45px;;
