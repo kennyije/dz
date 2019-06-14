@@ -13,20 +13,24 @@ export default new Router({
       name: 'home',
       component: Home
     },
-		{
-			path: '/game',
-			name: 'game',
-			component: Game
-		},
-		{
-			path: '/customer',
-			name: 'customer',
-			component: Customer
-		},
-		{
-			path: '/login',
-			name: 'login',
-			component: Login
+	{
+		path: '/game',
+		name: 'game',
+		component: Game,
+		meta: {
+			title: '比赛',
+			requireAuth: true
 		}
+	},
+	{
+		path: '/customer',
+		name: 'customer',
+		component: Customer
+	},
+	{
+		path: '/login',
+		name: 'login',
+		component: Login
+	}
   ]
 })

@@ -4,6 +4,7 @@
 				<div class="cust-top">
 					<div class="cust-top-halfup">
 						<div @click="login()">点击登录</div>
+						<div @click="logout()">点击退出</div>
 					</div>
 					<div class="cust-top-halfdown"></div>
 				</div>
@@ -16,13 +17,18 @@
 </template>
 
 <script>
+	import {mapMutations} from 'vuex'
 	export default{
 		methods:{
+			...mapMutations(['SET_ACCOUNT']),
 			close(){
 				this.$emit('closeCustomerInfo')
 			},
 			login(){
 				this.$router.push({path:'/login'})
+			},
+			logout(){
+				this.SET_ACCOUNT(null)
 			}
 		}
 	}

@@ -11,10 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-		"/localhost":{
-			target:"http://www.pinzhi365.com:80",
+		"/api":{
+			target:"http://127.0.0.1:80",
 			changeOrigin:true,
 			pathRewrite:{
+				'^/api':''
 			}
 		}
 	},

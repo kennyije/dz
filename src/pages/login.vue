@@ -27,6 +27,7 @@
 </template>
 
 <script>
+	import {mapMutations} from 'vuex'
 	export default{
 		data(){
 			return {
@@ -34,11 +35,33 @@
 			}
 		},
 		methods:{
+			...mapMutations(['SET_ACCOUNT']),
 			login() {
-				this.axios.post('/localhost/authentication/form', this.loginModel).then((x)=>{
-					console.log(x);
+				this.axios({
+				  url: '/api/authentication/form',
+				  method: 'post',
+				  data: this.loginModel,
+				  transformRequest: [function (data) {
+					let ret = ''
+					for (let it in data) {
+					  ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				  }],
+				  headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				  }
+				}).then(x=>{
+					if( x.data.code == "0")  {
+						this.SET_ACCOUNT(x.data.authentication)
+						this.$router.push({path:'/'})
+					} else {
+						alert(x.data.message)
+					}
 				})
 			}
+		},
+		mounted(){
 		}
 	}
 </script>
