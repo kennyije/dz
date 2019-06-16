@@ -12,10 +12,17 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
 		"/api":{
-			target:"http://127.0.0.1:80",
+			target:"http://www.liuyouwei.club",
 			changeOrigin:true,
 			pathRewrite:{
 				'^/api':''
+			}
+		},
+		"/oauth2.0":{
+			target:"https://graph.qq.com",
+			changeOrigin:true,
+			pathRewrite:{
+				'^/oauth2.0':''
 			}
 		}
 	},

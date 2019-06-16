@@ -19,7 +19,7 @@
 			</div>
 			<div class="login-down-halfdown">
 				<div><img class="weixin" src="../assets/img/login-weixin.png"/></div>
-				<div><img class="qq" src="../assets/img/login-qq.png"/></div>
+				<div @click="qqLogin()"><img class="qq" src="../assets/img/login-qq.png"/></div>
 				<div></div>
 			</div>
 		</div>
@@ -59,6 +59,9 @@
 						alert(x.data.message)
 					}
 				})
+			},
+			qqLogin(){
+				this.axios.get('/api/auth/qq')
 			}
 		},
 		mounted(){

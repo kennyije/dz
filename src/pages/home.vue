@@ -1,8 +1,6 @@
 <template>
 	
 	<div>
-		<Header/>
-		<Footer/>
 		<div v-for="item in items" class="part">
 			<div class="part-left">
 				<div class="part-left-up">新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
@@ -30,8 +28,6 @@
 
 <script>
 	import Vue from 'vue'
-	import Header from '@/components/header.vue'
-	import Footer from '@/components/footer.vue'
 	export default {
 		data(){
 			return {
@@ -53,8 +49,8 @@
 			}
 		},
 		components:{
-			Header,
-			Footer
+			// Header,
+			// Footer
 		},
 		methods:{
 			thumbsUp(item){
